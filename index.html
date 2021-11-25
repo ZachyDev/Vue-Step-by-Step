@@ -12,8 +12,8 @@
         <ul>
             <li v-for="student in students">{{ student }}</li>
         </ul>
-        <input type="text" id="inp">
-        <button id="addStudent">Add student</button>
+        <input type="text" v-model="newStudent">
+        <button @click="addStudent">Add student</button>
     </div>
 
     <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
@@ -24,15 +24,14 @@
         let app = new Vue({
             el: "#app",
             data: {
+                newStudent: '',
                 students: ['Zachy','Jack','Fay','Junior'],
             }, 
-            mounted() {
-                let btn = document.getElementById("addStudent");
-                let input = document.getElementById("inp")
-                btn.addEventListener('click', () => {
-                    app.students.push(input.value);
-                    name.value = '';
-                })
+            methods: {
+                addStudent() {
+                   this.students.push(this.newStudent);
+                   this.newStudent = '';
+                }
             }
         })
    

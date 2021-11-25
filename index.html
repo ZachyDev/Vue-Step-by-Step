@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue step by step</title>
+</head>
+<body>
+    
+    <div id="app">
+        <ul>
+            <li v-for="student in students">{{ student }}</li>
+        </ul>
+        <input type="text" v-model="newStudent">
+        <button @click="addStudent">Add student</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        
+        // create a new Vue instance
+        let app = new Vue({
+            el: "#app",
+            data: {
+                newStudent: '',
+                students: ['Zachy','Jack','Fay','Junior'],
+            }, 
+            methods: {
+                addStudent() {
+                   this.students.push(this.newStudent);
+                   this.newStudent = '';
+                }
+            }
+        })
+   
+    </script>
+</body>
+</html>

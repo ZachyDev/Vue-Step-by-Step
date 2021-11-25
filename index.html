@@ -9,8 +9,11 @@
 <body>
     
     <div id="app">
-        <input type="text" v-model="message">
-        <p>The message is {{ message }}</p>
+        <ul>
+            <li v-for="student in students">{{ student }}</li>
+        </ul>
+        <input type="text" id="inp">
+        <button id="addStudent">Add student</button>
     </div>
 
     <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
@@ -18,10 +21,18 @@
     <script>
         
         // create a new Vue instance
-        new Vue({
+        let app = new Vue({
             el: "#app",
             data: {
-                message: "Moseti"
+                students: ['Zachy','Jack','Fay','Junior'],
+            }, 
+            mounted() {
+                let btn = document.getElementById("addStudent");
+                let input = document.getElementById("inp")
+                btn.addEventListener('click', () => {
+                    app.students.push(input.value);
+                    name.value = '';
+                })
             }
         })
    
